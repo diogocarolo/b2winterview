@@ -1,0 +1,17 @@
+{
+  "name": "desafio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diogo Carolo",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap-styl": "^5.0.7",
+    "gulp": "^3.9.1",
+    "gulp-stylus": "^2.5.0",
+    "twitter": "^1.4.0"
+  }
+}
