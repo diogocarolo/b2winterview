@@ -4,7 +4,19 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="static/css/index.css">
 </head>
-<body>
-aaaaaa
+<body ng-app="app">
+	<div class="um" ng-controller="tweets">
+		<ul>
+			<li ng-repeat="item in text">{{item.texto}}</li>
+		</ul>
+	</div>
+<div class="dois">
+	
+</div>
+<div class="tres">
+	
+</div>
+<script src="static/js/angular.min.js"></script>
+<script type="text/javascript" src="static/js/app.js"></script>
 </body>
 </html>

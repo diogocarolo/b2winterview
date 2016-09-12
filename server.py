@@ -1,9 +1,9 @@
 import os
 import tweepy
-import sys
 import demjson
 import datetime
-from bottle import route, run, template, get, static_file
+from bottle import Bottle, route, run, hook, template, get, response, request
+
 
 
 #inicia variaveis de acesso
@@ -18,8 +18,14 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 json = []
+app = Bottle();
 
-#get tweets
+
+@hook('after_request')
+def enable_cors():
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    
+
 @route('/tweets')
 def tweets():
 	tweets = api.user_timeline(id="americanascom",count=200)
@@ -35,6 +41,7 @@ def tweets():
 		})
 		
 	tweet = demjson.encode(json)
+	response.headers['Content-Type'] = 'application/json'
 	return tweet
 
 #get tweets with media
@@ -85,5 +92,6 @@ def trend():
 
 	infoTrends = demjson.encode(json)
 	return infoTrends
+
 
 run(host='localhost', port=8080, debug=True)
