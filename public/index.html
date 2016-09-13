@@ -6,8 +6,8 @@
 </head>
 <body ng-app="app">
 	<div class="um" ng-controller="tweets">
-		<ul>
-			<li ng-repeat="item in text">{{item.texto}}</li>
+		<ul infinite-scroll='loadTweets()' infinite-scroll-distance='2'>
+			<li ng-repeat="item in tweets">{{item.texto}} / <img src="{{item.img}}></li>
 		</ul>
 	</div>
 <div class="dois">
@@ -16,7 +16,9 @@
 <div class="tres">
 	
 </div>
+<script src="static/js/jquery-3.1.0.js"></script>
 <script src="static/js/angular.min.js"></script>
+<script src="static/js/ng-infinite-scroll.min.js"></script>
 <script type="text/javascript" src="static/js/app.js"></script>
 </body>
 </html>

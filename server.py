@@ -2,6 +2,7 @@ import os
 import tweepy
 import demjson
 import datetime
+import bottle
 from bottle import Bottle, route, run, hook, template, get, response, request
 
 
@@ -17,7 +18,6 @@ auth = tweepy.OAuthHandler(cons_key, cons_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
-json = []
 app = Bottle();
 
 
@@ -30,7 +30,7 @@ def enable_cors():
 def tweets():
 	tweets = api.user_timeline(id="americanascom",count=200)
 	imageTweet = ""
-
+	json = []
 	for t in tweets:
 		if 'media' in t.entities:
 			for image in  t.entities['media']:
@@ -39,7 +39,26 @@ def tweets():
 			'texto': t.text,
 			'img': imageTweet
 		})
-		
+	
+	tweet = demjson.encode(json)
+	response.headers['Content-Type'] = 'application/json'
+	return tweet
+
+#more tweets infinite scroll
+@route('/moreTweets',METHOD='get')
+def tweets():
+	tweets = api.user_timeline(id="americanascom",count=200,page=bottle.request.params.get('page'))
+	imageTweet = ""
+	json = []
+	for t in tweets:
+		if 'media' in t.entities:
+			for image in  t.entities['media']:
+				imageTweet = image['media_url']
+		json.append({
+			'texto': t.text,
+			'img': imageTweet
+		})
+	
 	tweet = demjson.encode(json)
 	response.headers['Content-Type'] = 'application/json'
 	return tweet
@@ -48,6 +67,7 @@ def tweets():
 @route('/tweetsMedia')
 def tweetsImage():
 	tweets = api.user_timeline(id="americanascom",count=200)
+	json = []
 	for t in tweets:
 		if 'media' in t.entities:
 			for image in  t.entities['media']:
@@ -62,6 +82,7 @@ def tweetsImage():
 @route("/infoUser")
 def info():
 	info = api.get_user(id="americanascom")
+	json = []
 	json.append({
 		"name": info.name, 
 		"description": info.description,
@@ -81,6 +102,7 @@ def info():
 
 @route("/trend")
 def trend():
+	json = []
 	trends = api.trends_place(1)
 	data = trends[0]
 	trends = data['trends']
