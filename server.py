@@ -77,6 +77,7 @@ def tweetsImage():
 					'img': imageTweet
 				})
 	tweet = demjson.encode(json)
+	response.headers['Content-Type'] = 'application/json'
 	return tweet
 
 @route("/infoUser")
@@ -98,6 +99,7 @@ def info():
 		"profile_image_url": info.profile_image_url
 	})
 	infoUser = demjson.encode(json)
+	response.headers['Content-Type'] = 'application/json'
 	return infoUser
 
 @route("/trend")

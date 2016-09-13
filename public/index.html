@@ -3,22 +3,45 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="static/css/index.css">
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-app="app">
-	<div class="um" ng-controller="tweets">
+	<!--<div class="um" ng-controller="tweets">
 		<ul infinite-scroll='loadTweets()' infinite-scroll-distance='2'>
-			<li ng-repeat="item in tweets">{{item.texto}} / <img src="{{item.img}}></li>
+			<li ng-repeat="item in tweets">{{item.texto}} / <img src="{{item.img}}"></li>
 		</ul>
-	</div>
-<div class="dois">
+	</div> -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<nav>
+					<ul class="navigation">
+						<li><a href=""><img src="static/img/home.png"> <span>Inicio</span></a></li>
+						<li><a href=""><img src="static/img/flash.png"> <span>Momentos</span></a></li>
+						<li><a href=""><img src="static/img/bell.png"> <span>Notificações</span></a></li>
+						<li><a href=""><img src="static/img/message.png"> <span>Mensagens</span></a></li>
+					</ul>
+				</nav>
+				<div class="pull-right navigation-right">
+					<input type="text" placeholder="buscar" class="search
+					" name="search">
+					<img class="icon" src="/static/img/search.png">
+					<img src="static/img/avatar.png">
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="bg-image" style="background-image: url('{{infos[0].img_background}}')" ng-controller="infoUser"></div>
+
 	
-</div>
-<div class="tres">
-	
-</div>
-<script src="static/js/jquery-3.1.0.js"></script>
-<script src="static/js/angular.min.js"></script>
-<script src="static/js/ng-infinite-scroll.min.js"></script>
-<script type="text/javascript" src="static/js/app.js"></script>
+
+	<!-- load scripts -->
+	<script src="static/js/jquery-3.1.0.js"></script>
+	<script src="static/js/angular.min.js"></script>
+	<script src="static/js/ng-infinite-scroll.min.js"></script>
+	<script type="text/javascript" src="static/js/app.js"></script>
+
 </body>
 </html>

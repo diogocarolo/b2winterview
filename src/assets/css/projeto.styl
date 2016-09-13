@@ -1,0 +1,61 @@
+header
+	padding 10px 0
+	nav
+		.navigation
+			padding: 10px 0
+			float left
+			padding 0
+			li
+				padding 0 6px
+				display inline
+				a
+					padding 0 4px
+					span
+						@extend .hidden-xs
+						vertical-align middle
+					&:hover
+						text-decoration none
+	input[type=text]
+		
+		border-radius 30px
+		padding 5px 27px 6px 12px
+		background-color #f5f8fa
+		border 1px solid #e1e8ed
+		&:focus
+			outline none
+	.search
+		@extend .hidden-xs
+	.icon
+		position relative
+		top 0
+		right 30px
+.bg-image
+	width 100%
+	height 278px
+	background-size cover
+	background-position center
+	
+
+		
+
+/* Telefones em landscape e abaixo */
+@media (max-width: 480px)
+	header
+		border-bottom 1px solid #e1e8ed
+		a
+			padding 0 8px
+	.bg-image
+		width auto
+		height 100px
+		background-size cover
+		background-position right
+			
+					
+/* Telefone em landscape a tablet em portrait */
+// @media (max-width: 767px)
+
+/* tablet em portrait a landscape e desktop */
+// @media (min-width: 768px) and (max-width: 979px)
+
+/* Desktop grande */
+// @media (min-width: 1200px)
