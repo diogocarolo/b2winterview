@@ -1682,6 +1682,7 @@ pre code {
 .main__tweets__content,
 .main__tweets__content img,
 .main__tweets__content >.text,
+.trends,
 .imgProfile {
   position: relative;
   min-height: 1px;
@@ -2049,6 +2050,7 @@ pre code {
   .main__tweets__content,
   .main__tweets__content img,
   .main__tweets__content >.text,
+  .trends,
   .imgProfile {
     float: left;
   }
@@ -2089,7 +2091,8 @@ pre code {
   .infoProfile__numbers .friends,
   .infoProfile__numbers .followers,
   .infoProfile__numbers .likes,
-  .infoProfile__data {
+  .infoProfile__data,
+  .trends {
     width: 25%;
   }
   .col-md-2,
@@ -6885,6 +6888,16 @@ header .icon {
 .main__tweets__content >.text small {
   font-weight: normal;
   color: #8899a6;
+}
+.main__tweets__content >.text .img-tweet {
+  width: 300px;
+  margin: 20px auto;
+}
+.trends__content {
+  background-color: #fff;
+  border: 1px solid #e1e8ed;
+  border-radius: 5px 5px 0 0;
+  padding: 15px;
 }
 .imgProfile {
   padding: 0;

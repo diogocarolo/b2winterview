@@ -26,9 +26,9 @@ def enable_cors():
     response.headers['Access-Control-Allow-Origin'] = '*'
     
 
-@route('/tweets')
+@route('/tweets',METHOD='get')
 def tweets():
-	tweets = api.user_timeline(id="americanascom",count=200)
+	tweets = api.user_timeline(id="americanascom",count=5,page=bottle.request.params.get('page'))
 	imageTweet = ""
 	json = []
 	for t in tweets:
@@ -49,28 +49,6 @@ def tweets():
 	response.headers['Content-Type'] = 'application/json'
 	return tweet
 
-#more tweets infinite scroll
-@route('/moreTweets',METHOD='get')
-def tweets():
-	tweets = api.user_timeline(id="americanascom",count=200,page=bottle.request.params.get('page'))
-	imageTweet = ""
-	json = []
-	for t in tweets:
-		if 'media' in t.entities:
-			for image in  t.entities['media']:
-				imageTweet = image['media_url']
-		json.append({
-			'text': t.text,
-			'img': imageTweet,
-			'imgProfile': t.user.profile_image_url,
-			'name': t.user.name,
-			'screen_name': "@"+t.user.screen_name,
-			'replyTo': t.in_reply_to_screen_name,
-		})
-	
-	tweet = demjson.encode(json)
-	response.headers['Content-Type'] = 'application/json'
-	return tweet
 
 #get tweets with media
 @route('/tweetsMedia')

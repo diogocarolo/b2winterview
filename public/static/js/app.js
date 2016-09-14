@@ -1,15 +1,21 @@
 var app = angular.module('app', ['infinite-scroll']);
 
 app.controller('tweets', ['$scope', '$http', function ($scope, $http) {
-    $http.get("http://localhost:8080/tweets").success(function (data) {
+    $http.get("http://localhost:8080/tweets?page=1").success(function (data) {
     	$scope.tweets = data;
     	console.log($scope.tweets.length);
     	var page = 2;
+    	$scope.busy = false;
 		$scope.loadTweets = function() {
-			$http.get("http://localhost:8080/moreTweets?page="+page).success(function (data) {
+			if($scope.busy) {
+				return;
+			}
+			$scope.busy = true;
+			$http.get("http://localhost:8080/tweets?page="+page).success(function (data) {
 				for(var i = 0;i<data.length;i++){
 					$scope.tweets.push(data[i]);
 				}
+				$scope.busy = false;
 			});
 			page++;
 		};

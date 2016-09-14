@@ -26,66 +26,75 @@
 				<div class="pull-right navigation-right">
 					<input type="text" placeholder="buscar" class="search
 					" name="search">
-					<img class="icon" src="/static/img/search.png">
+					<img class="icon" src="static/img/search1.png">
 					<img src="static/img/avatar.png">
 				</div>
 			</div>
 		</div>
 	</header>
+	<section ng-controller="infoUser">
+		<div class="bg-image" style="background-image: url('{{infos.img_background}}')" ></div>
 
-	<div class="bg-image" style="background-image: url('{{infos.img_background}}')" ng-controller="infoUser"></div>
-
-	<div class="infoProfile" ng-controller="infoUser">
-		<div class="container">
-			<div class="row">
-				<img src="{{infos.profile_image_url}}" class="imgProfile">
-				<div class="infoProfile__numbers">
-					<div class="tweets-info">
-						<span>TWEETS <br> {{infos.tweets}}</span>
-					</div>
-					<div class="friends">
-						<span>SEGUINDO <br> {{infos.friends_count}}</span>
-					</div>
-					<div class="followers">
-						<span>SEGUINDO <br> {{infos.followers_count}}</span>
-					</div>
-					<div class="likes">
-						<span>CURTIDAS <br> {{infos.likes}}</span>
+		<div class="infoProfile">
+			<div class="container">
+				<div class="row">
+					<img src="{{infos.profile_image_url}}" class="imgProfile">
+					<div class="infoProfile__numbers">
+						<div class="tweets-info">
+							<span>TWEETS <br> {{infos.tweets}}</span>
+						</div>
+						<div class="friends">
+							<span>SEGUINDO <br> {{infos.friends_count}}</span>
+						</div>
+						<div class="followers">
+							<span>SEGUINDO <br> {{infos.followers_count}}</span>
+						</div>
+						<div class="likes">
+							<span>CURTIDAS <br> {{infos.likes}}</span>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="infoProfile__data">
-					<a class="title" href="">{{infos.name}}</a>
-					<small><a class="subtitle" href="">{{infos.screen_name}}</a></small>
-					<p class="description">{{infos.description}}</p>
-					<span>{{infos.location}}</span> <br>
-					<span><a href=""></a>americanas.com</span> <br>
-					<span>Participa desde {{infos.month}} de {{infos.year}}
-				</div>
-				<div class="main" ng-controller="tweets">
-					<ul class="main__options">
-						<li><a href="">Tweets e respostas</a></li>
-						<li><a href="">Mídia</a></li>
-					</ul>
-					<div class="main__tweets" infinite-scroll='loadTweets()' infinite-scroll-distance='2'>
-						<div ng-repeat="item in tweets" class="main__tweets__content">
-							<img src="{{item.imgProfile}}">
-							<div class="text">
-								<div class="reply" ng-if="item.replyTo != null">Em resposta a {{item.replyTo}}</div>
-								<div class="usernames">
-									<span>{{item.name}}<span> <small>{{item.screen_name}}</small>
-								</div>
-								<div class="message">
-									{{item.text}}
+				<div class="row">
+					<div class="infoProfile__data">
+						<a class="title" href="">{{infos.name}}</a>
+						<small><a class="subtitle" href="">{{infos.screen_name}}</a></small>
+						<p class="description">{{infos.description}}</p>
+						<span><img src="static/img/geo.png">{{infos.location}}</span> <br>
+						<span><img src="static/img/link.png"><a href="http://{{infos.name}}">{{infos.name}}</a></span> <br>
+						<span><img src="static/img/calendar.png"> Participa desde {{infos.month}} de {{infos.year}}
+					</div>
+					<div class="main" ng-controller="tweets">
+						<div class="content-padd">
+							<ul class="main__options">
+								<li><a href="">Tweets e respostas</a></li>
+								<li><a href="">Mídia</a></li>
+							</ul>
+							<div class="main__tweets" infinite-scroll='loadTweets()' infinite-scroll-disabled="busy" infinite-scroll-distance='2'>
+								<div ng-repeat="item in tweets" class="main__tweets__content">
+									<img src="{{item.imgProfile}}">
+									<div class="text">
+										<div class="reply" ng-if="item.replyTo != null">Em resposta a {{item.replyTo}}</div>
+										<div class="usernames">
+											<span>{{item.name}}<span> <small>{{item.screen_name}}</small>
+										</div>
+										<div class="message">
+											{{item.text}}
+										</div>
+										<div class="reply" ng-if="item.img && item.replyTo == null"><img class="img-tweet" src="{{item.img}}"></div>
+									</div>
 								</div>
 							</div>
+						</div>
+					</div>
+					<div class="trends">
+						<div class="trends__content">
+							<span>Assuntos do momento</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 
 	<!-- load scripts -->
 	<script src="static/js/jquery-3.1.0.js"></script>
