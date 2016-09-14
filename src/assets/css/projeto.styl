@@ -1,13 +1,20 @@
+ul
+	padding 0
+	margin 0
+	li
+		display inline-block
+body
+	background-color #F5F8FA
 header
+	background-color #fff
 	padding 10px 0
 	nav
 		.navigation
-			padding: 10px 0
 			float left
+			margin 0
 			padding 0
 			li
 				padding 0 6px
-				display inline
 				a
 					padding 0 4px
 					span
@@ -29,12 +36,75 @@ header
 		position relative
 		top 0
 		right 30px
+		
+
 .bg-image
 	width 100%
-	height 278px
+	height 320px
 	background-size cover
 	background-position center
 	
+.infoProfile
+	width 100%
+	height 60px
+	border-bottom 1px solid #e1e8ed
+	background-color #fff
+	&__numbers
+		@extend .col-md-4
+		@extend .hidden-xs
+		margin 10px 0 0 50px 
+		.tweets-info,.friends,.followers,.likes
+			@extend .col-md-3
+			text-align center
+			padding 0 4px
+	&__data
+		@extend .col-md-3
+		@extend .col-xs-12
+		.title
+			font-size 24px
+			font-weight bold
+			color #000
+		.subtitle
+			color #8899a6
+
+.main
+	@extend .col-md-6
+	padding 0
+	background-color #fff
+	border 1px solid #e1e8ed
+	border-radius 5px 5px 0 0
+	&__options
+		border-bottom 1px solid #e1e8ed
+		li
+			padding 20px
+	&__tweets
+		&__content
+			@extend .col-md-12
+			border-bottom 1px solid #e1e8ed
+			padding 20px 0
+			img
+				@extend .col-md-2
+				width 80px
+			>.text
+				@extend .col-md-10
+				span
+					font-weight bold
+				small
+					font-weight normal
+					color #8899a6
+					
+			
+.imgProfile
+	@extend .col-md-6
+	padding 0
+	background #fff
+	border 5px solid #fff
+	border-radius 12px
+	box-shadow 0 1px 1px rgba(136,153,166,0.15)
+	height 210px
+	position relative
+	width 210px
+	margin-top -130px
 
 		
 
@@ -44,11 +114,28 @@ header
 		border-bottom 1px solid #e1e8ed
 		a
 			padding 0 8px
+			
 	.bg-image
 		width auto
 		height 100px
 		background-size cover
 		background-position right
+		
+	.imgProfile
+		padding 0
+		background #fff
+		border 5px solid #fff
+		border-radius 12px
+		box-shadow 0 1px 1px rgba(136,153,166,0.15)
+		height 80px
+		position relative
+		width 80px
+		margin-top -47px
+		margin-left 11px
+		
+	.infoProfile
+		border-bottom none
+		
 			
 					
 /* Telefone em landscape a tablet em portrait */

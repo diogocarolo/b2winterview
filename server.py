@@ -36,8 +36,13 @@ def tweets():
 			for image in  t.entities['media']:
 				imageTweet = image['media_url']
 		json.append({
-			'texto': t.text,
-			'img': imageTweet
+			'text': t.text,
+			'img': imageTweet,
+			'imgProfile': t.user.profile_image_url,
+			'name': t.user.name,
+			'screen_name': "@"+t.user.screen_name,
+			'replyTo': t.in_reply_to_screen_name,
+			
 		})
 	
 	tweet = demjson.encode(json)
@@ -55,8 +60,12 @@ def tweets():
 			for image in  t.entities['media']:
 				imageTweet = image['media_url']
 		json.append({
-			'texto': t.text,
-			'img': imageTweet
+			'text': t.text,
+			'img': imageTweet,
+			'imgProfile': t.user.profile_image_url,
+			'name': t.user.name,
+			'screen_name': "@"+t.user.screen_name,
+			'replyTo': t.in_reply_to_screen_name,
 		})
 	
 	tweet = demjson.encode(json)
@@ -83,8 +92,7 @@ def tweetsImage():
 @route("/infoUser")
 def info():
 	info = api.get_user(id="americanascom")
-	json = []
-	json.append({
+	json = {
 		"name": info.name, 
 		"description": info.description,
 		"location": info.location,
@@ -97,7 +105,7 @@ def info():
 		"screen_name": "@"+info.screen_name,
 		"img_background": info.profile_banner_url,
 		"profile_image_url": info.profile_image_url
-	})
+	}
 	infoUser = demjson.encode(json)
 	response.headers['Content-Type'] = 'application/json'
 	return infoUser

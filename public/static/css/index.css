@@ -1671,7 +1671,18 @@ pre code {
 .col-xs-12,
 .col-sm-12,
 .col-md-12,
-.col-lg-12 {
+.col-lg-12,
+.infoProfile__numbers,
+.infoProfile__numbers .tweets-info,
+.infoProfile__numbers .friends,
+.infoProfile__numbers .followers,
+.infoProfile__numbers .likes,
+.infoProfile__data,
+.main,
+.main__tweets__content,
+.main__tweets__content img,
+.main__tweets__content >.text,
+.imgProfile {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -1688,10 +1699,12 @@ pre code {
 .col-xs-9,
 .col-xs-10,
 .col-xs-11,
-.col-xs-12 {
+.col-xs-12,
+.infoProfile__data {
   float: left;
 }
-.col-xs-12 {
+.col-xs-12,
+.infoProfile__data {
   width: 100%;
 }
 .col-xs-11 {
@@ -2025,16 +2038,29 @@ pre code {
   .col-md-9,
   .col-md-10,
   .col-md-11,
-  .col-md-12 {
+  .col-md-12,
+  .infoProfile__numbers,
+  .infoProfile__numbers .tweets-info,
+  .infoProfile__numbers .friends,
+  .infoProfile__numbers .followers,
+  .infoProfile__numbers .likes,
+  .infoProfile__data,
+  .main,
+  .main__tweets__content,
+  .main__tweets__content img,
+  .main__tweets__content >.text,
+  .imgProfile {
     float: left;
   }
-  .col-md-12 {
+  .col-md-12,
+  .main__tweets__content {
     width: 100%;
   }
   .col-md-11 {
     width: 91.66666666666666%;
   }
-  .col-md-10 {
+  .col-md-10,
+  .main__tweets__content >.text {
     width: 83.33333333333334%;
   }
   .col-md-9 {
@@ -2046,19 +2072,28 @@ pre code {
   .col-md-7 {
     width: 58.333333333333336%;
   }
-  .col-md-6 {
+  .col-md-6,
+  .main,
+  .imgProfile {
     width: 50%;
   }
   .col-md-5 {
     width: 41.66666666666667%;
   }
-  .col-md-4 {
+  .col-md-4,
+  .infoProfile__numbers {
     width: 33.33333333333333%;
   }
-  .col-md-3 {
+  .col-md-3,
+  .infoProfile__numbers .tweets-info,
+  .infoProfile__numbers .friends,
+  .infoProfile__numbers .followers,
+  .infoProfile__numbers .likes,
+  .infoProfile__data {
     width: 25%;
   }
-  .col-md-2 {
+  .col-md-2,
+  .main__tweets__content img {
     width: 16.666666666666664%;
   }
   .col-md-1 {
@@ -6683,7 +6718,8 @@ button.close {
 @media (max-width: 767px) {
   .hidden-xs,
   header nav .navigation li a span,
-  header .search {
+  header .search,
+  .infoProfile__numbers {
     display: none !important;
   }
 }
@@ -6749,17 +6785,27 @@ button.close {
     display: none !important;
   }
 }
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  display: inline-block;
+}
+body {
+  background-color: #f5f8fa;
+}
 header {
+  background-color: #fff;
   padding: 10px 0;
 }
 header nav .navigation {
-  padding: 10px 0;
   float: left;
+  margin: 0;
   padding: 0;
 }
 header nav .navigation li {
   padding: 0 6px;
-  display: inline;
 }
 header nav .navigation li a {
   padding: 0 4px;
@@ -6786,9 +6832,70 @@ header .icon {
 }
 .bg-image {
   width: 100%;
-  height: 278px;
+  height: 320px;
   background-size: cover;
   background-position: center;
+}
+.infoProfile {
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #e1e8ed;
+  background-color: #fff;
+}
+.infoProfile__numbers {
+  margin: 10px 0 0 50px;
+}
+.infoProfile__numbers .tweets-info,
+.infoProfile__numbers .friends,
+.infoProfile__numbers .followers,
+.infoProfile__numbers .likes {
+  text-align: center;
+  padding: 0 4px;
+}
+.infoProfile__data .title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+.infoProfile__data .subtitle {
+  color: #8899a6;
+}
+.main {
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #e1e8ed;
+  border-radius: 5px 5px 0 0;
+}
+.main__options {
+  border-bottom: 1px solid #e1e8ed;
+}
+.main__options li {
+  padding: 20px;
+}
+.main__tweets__content {
+  border-bottom: 1px solid #e1e8ed;
+  padding: 20px 0;
+}
+.main__tweets__content img {
+  width: 80px;
+}
+.main__tweets__content >.text span {
+  font-weight: bold;
+}
+.main__tweets__content >.text small {
+  font-weight: normal;
+  color: #8899a6;
+}
+.imgProfile {
+  padding: 0;
+  background: #fff;
+  border: 5px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 1px rgba(136,153,166,0.15);
+  height: 210px;
+  position: relative;
+  width: 210px;
+  margin-top: -130px;
 }
 @media (max-width: 480px) {
   header {
@@ -6802,5 +6909,20 @@ header .icon {
     height: 100px;
     background-size: cover;
     background-position: right;
+  }
+  .imgProfile {
+    padding: 0;
+    background: #fff;
+    border: 5px solid #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 1px rgba(136,153,166,0.15);
+    height: 80px;
+    position: relative;
+    width: 80px;
+    margin-top: -47px;
+    margin-left: 11px;
+  }
+  .infoProfile {
+    border-bottom: none;
   }
 }
