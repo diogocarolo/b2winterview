@@ -25,6 +25,13 @@ app.controller('tweets', ['$scope', '$http', function ($scope, $http) {
 app.controller('infoUser',['$scope','$http', function ($scope,$http) {
 	$http.get("http://localhost:8080/infoUser").success(function (data) {
 		$scope.infos = data;
-		console.log($scope.infos);
+	});
+}]);
+
+
+
+app.controller('trends',['$scope','$http',function ($scope,$http) {
+	$http.get("http://localhost:8080/trends").success(function (data) {
+		$scope.trends = data;
 	});
 }]);

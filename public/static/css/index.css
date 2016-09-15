@@ -1104,7 +1104,8 @@ img {
 .thumbnail > img,
 .thumbnail a > img,
 .carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
+.carousel-inner > .item > a > img,
+.main__tweets__content >.text .img-tweet img {
   display: block;
   max-width: 100%;
   height: auto;
@@ -1683,6 +1684,8 @@ pre code {
 .main__tweets__content img,
 .main__tweets__content >.text,
 .trends,
+.trends__content .title,
+.trends__content .list,
 .imgProfile {
   position: relative;
   min-height: 1px;
@@ -2051,11 +2054,16 @@ pre code {
   .main__tweets__content img,
   .main__tweets__content >.text,
   .trends,
+  .trends__content .title,
+  .trends__content .list,
   .imgProfile {
     float: left;
   }
   .col-md-12,
-  .main__tweets__content {
+  .main,
+  .main__tweets__content,
+  .trends__content .title,
+  .trends__content .list {
     width: 100%;
   }
   .col-md-11 {
@@ -6855,6 +6863,9 @@ header .icon {
   text-align: center;
   padding: 0 4px;
 }
+.infoProfile__data {
+  z-index: 9;
+}
 .infoProfile__data .title {
   font-size: 24px;
   font-weight: bold;
@@ -6893,11 +6904,35 @@ header .icon {
   width: 300px;
   margin: 20px auto;
 }
+.main__tweets__content >.text .img-tweet img {
+  width: 100%;
+}
 .trends__content {
   background-color: #fff;
   border: 1px solid #e1e8ed;
   border-radius: 5px 5px 0 0;
+  padding: 0;
+}
+.trends__content .title,
+.trends__content .list {
   padding: 15px;
+  border-bottom: 1px solid #e1e8ed;
+  background-color: #fff;
+}
+.trends__content .title {
+  color: #66757f;
+  font-size: 18px;
+  font-weight: 300;
+}
+.trends__content .list a {
+  text-decoration: none;
+}
+.trends__content .list a .name {
+  color: #a8a1a2;
+  font-weight: bold;
+}
+.trends__content .list a .count {
+  color: #8899a6;
 }
 .imgProfile {
   padding: 0;

@@ -88,7 +88,7 @@ def info():
 	response.headers['Content-Type'] = 'application/json'
 	return infoUser
 
-@route("/trend")
+@route("/trends")
 def trend():
 	json = []
 	trends = api.trends_place(1)
@@ -101,6 +101,7 @@ def trend():
 		})
 
 	infoTrends = demjson.encode(json)
+	response.headers['Content-Type'] = 'application/json'
 	return infoTrends
 
 

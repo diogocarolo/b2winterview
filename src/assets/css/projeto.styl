@@ -60,6 +60,7 @@ header
 	&__data
 		@extend .col-md-3
 		@extend .col-xs-12
+		z-index 9
 		.title
 			font-size 24px
 			font-weight bold
@@ -69,6 +70,7 @@ header
 
 .main
 	@extend .col-md-6
+	@extend .col-md-12
 	padding 0
 	background-color #fff
 	border 1px solid #e1e8ed
@@ -95,6 +97,9 @@ header
 				.img-tweet
 					width 300px
 					margin 20px auto
+					img
+						@extend .img-responsive
+						width 100%
 	
 					
 .trends
@@ -103,7 +108,25 @@ header
 		background-color #fff
 		border 1px solid #e1e8ed
 		border-radius 5px 5px 0 0
-		padding 15px
+		padding 0
+		.title,.list
+			@extend .col-md-12
+			padding 15px
+			border-bottom 1px solid #e1e8ed
+			background-color #fff
+		.title
+			color #66757f
+			font-size 18px
+			font-weight 300
+		.list
+			a
+				text-decoration none
+				.name
+					color #a8a1a2
+					font-weight bold
+				.count
+					color #8899a6
+
 		
 			
 .imgProfile

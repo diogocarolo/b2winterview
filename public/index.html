@@ -56,7 +56,7 @@
 				</div>
 				<div class="row">
 					<div class="infoProfile__data">
-						<a class="title" href="">{{infos.name}}</a>
+						<a class="title" href="">{{infos.name}}</a> <br>
 						<small><a class="subtitle" href="">{{infos.screen_name}}</a></small>
 						<p class="description">{{infos.description}}</p>
 						<span><img src="static/img/geo.png">{{infos.location}}</span> <br>
@@ -86,9 +86,17 @@
 							</div>
 						</div>
 					</div>
-					<div class="trends">
+					<div class="trends" ng-controller="trends">
 						<div class="trends__content">
-							<span>Assuntos do momento</span>
+							<div class="title">
+								<span>Assuntos do momento</span>
+							</div>
+							<div ng-repeat="item in trends" class="list">
+								<a href="">
+									<span class="name">{{item.name}}</span> <br>
+									<span class="count">{{item.tweet_count}} Tweets</span>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
