@@ -32,7 +32,7 @@
 			</div>
 		</div>
 	</header>
-	<section ng-controller="infoUser">
+	<section ng-controller="user">
 		<div class="bg-image" style="background-image: url('{{infos.img_background}}')" ></div>
 
 		<div class="infoProfile">
@@ -41,16 +41,16 @@
 					<img src="{{infos.profile_image_url}}" class="imgProfile">
 					<div class="infoProfile__numbers">
 						<div class="tweets-info">
-							<span>TWEETS <br> {{infos.tweets}}</span>
+							<span><small>TWEETS</small> <br> <span class="count">{{infos.tweets}}</span></span>
 						</div>
 						<div class="friends">
-							<span>SEGUINDO <br> {{infos.friends_count}}</span>
+							<span><small>SEGUINDO</small> <br> <span class="count">{{infos.friends_count}}</span></span>
 						</div>
 						<div class="followers">
-							<span>SEGUINDO <br> {{infos.followers_count}}</span>
+							<span><small>SEGUIDORES</small> <br> <span class="count">{{infos.followers_count}}</span></span>
 						</div>
 						<div class="likes">
-							<span>CURTIDAS <br> {{infos.likes}}</span>
+							<span><small>CURTIDAS</small> <br> <span class="count">{{infos.likes}}</span></span>
 						</div>
 					</div>
 				</div>
@@ -59,17 +59,51 @@
 						<a class="title" href="">{{infos.name}}</a> <br>
 						<small><a class="subtitle" href="">{{infos.screen_name}}</a></small>
 						<p class="description">{{infos.description}}</p>
-						<span><img src="static/img/geo.png">{{infos.location}}</span> <br>
-						<span><img src="static/img/link.png"><a href="http://{{infos.name}}">{{infos.name}}</a></span> <br>
-						<span><img src="static/img/calendar.png"> Participa desde {{infos.month}} de {{infos.year}}
+						<div class="geo">
+							<span><img src="static/img/geo.png">{{infos.location}}</span> <br>
+						</div>
+						<div class="site">
+							<span><img src="static/img/link.png"><a href="http://{{infos.name}}">{{infos.name}}</a></span>
+						</div>
+						<div class="year"><span><img src="static/img/calendar.png"> Participa desde {{infos.month}} de {{infos.year}}</div>
 					</div>
-					<div class="main" ng-controller="tweets">
+					<div class="main" >
 						<div class="content-padd">
 							<ul class="main__options">
-								<li><a href="">Tweets e respostas</a></li>
-								<li><a href="">Mídia</a></li>
+								<li><a class="opt3" href="">Tweets</a></li>	
+								<li><a class="opt1 active" href="">Tweets e respostas</a></li>
+								<li><a class="opt2" href="">Mídia</a></li>
 							</ul>
-							<div class="main__tweets" infinite-scroll='loadTweets()' infinite-scroll-disabled="busy" infinite-scroll-distance='2'>
+							<div class="main__tweets" infinite-scroll='loadTweets()' infinite-scroll-disabled="busy" infinite-scroll-distance='2' ng-controller="tweets">
+								<div ng-repeat="item in tweets" class="main__tweets__content">
+									<img class="profile" src="{{item.imgProfile}}">
+									<div class="text">
+										<div class="reply" ng-if="item.replyTo != null">Em resposta a {{item.replyTo}}</div>
+										<div class="usernames">
+											<span>{{item.name}}<span> <small>{{item.screen_name}}</small>
+										</div>
+										<div class="message">
+											{{item.text}}
+										</div>
+										<div class="reply" ng-if="item.img && item.replyTo == null"><img class="img-tweet" src="{{item.img}}"></div>
+										<div class="footer">
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/reply.png"></a>
+											</div>
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/retweet.png"></a>
+											</div>
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/heart.png"></a>
+											</div>
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/more.png"></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="main__tweets-media hide" infinite-scroll='loadTweets()' infinite-scroll-disabled="busy" infinite-scroll-distance='2' ng-controller="tweets-media">
 								<div ng-repeat="item in tweets" class="main__tweets__content">
 									<img src="{{item.imgProfile}}">
 									<div class="text">
@@ -81,9 +115,52 @@
 											{{item.text}}
 										</div>
 										<div class="reply" ng-if="item.img && item.replyTo == null"><img class="img-tweet" src="{{item.img}}"></div>
+										<div class="footer">
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/reply.png"></a>
+											</div>
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/retweet.png"></a>
+											</div>
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/heart.png"></a>
+											</div>
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/more.png"></a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+							<div class="main__tweets-only hide" infinite-scroll='loadTweets()' infinite-scroll-disabled="busy" infinite-scroll-distance='2' ng-controller="tweets">
+								<div ng-repeat="item in tweets" class="main__tweets__content" ng-if="item.replyTo == null">
+									<img src="{{item.imgProfile}}">
+									<div class="text">
+										<div class="reply" ng-if="item.replyTo != null">Em resposta a {{item.replyTo}}</div>
+										<div class="usernames">
+											<span>{{item.name}}<span> <small>{{item.screen_name}}</small>
+										</div>
+										<div class="message">
+											{{item.text}}
+										</div>
+										<div class="reply" ng-if="item.img && item.replyTo == null"><img class="img-tweet" src="{{item.img}}"></div>
+										<div class="footer">
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/reply.png"></a>
+											</div>
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/retweet.png"></a>
+											</div>
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/heart.png"></a>
+											</div>
+											<div class="footer-tweet">
+												<a href=""><img src="static/img/more.png"></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
 						</div>
 					</div>
 					<div class="trends" ng-controller="trends">
@@ -94,7 +171,7 @@
 							<div ng-repeat="item in trends" class="list">
 								<a href="">
 									<span class="name">{{item.name}}</span> <br>
-									<span class="count">{{item.tweet_count}} Tweets</span>
+									<span class="count" ng-if="item.tweet_count != null">{{item.tweet_count}} Tweets</span>
 								</a>
 							</div>
 						</div>
@@ -106,6 +183,7 @@
 
 	<!-- load scripts -->
 	<script src="static/js/jquery-3.1.0.js"></script>
+	<script src="static/js/main.js"></script>
 	<script src="static/js/angular.min.js"></script>
 	<script src="static/js/ng-infinite-scroll.min.js"></script>
 	<script type="text/javascript" src="static/js/app.js"></script>

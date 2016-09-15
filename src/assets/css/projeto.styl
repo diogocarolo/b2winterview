@@ -5,6 +5,7 @@ ul
 		display inline-block
 body
 	background-color #F5F8FA
+	
 header
 	background-color #fff
 	padding 10px 0
@@ -14,7 +15,7 @@ header
 			margin 0
 			padding 0
 			li
-				padding 0 6px
+				padding 4px 6px
 				a
 					padding 0 4px
 					span
@@ -49,6 +50,12 @@ header
 	height 60px
 	border-bottom 1px solid #e1e8ed
 	background-color #fff
+	.site
+		a
+			color #a8a1a2
+	.geo,.site,.year
+		margin-top 10px
+	
 	&__numbers
 		@extend .col-md-4
 		@extend .hidden-xs
@@ -57,6 +64,9 @@ header
 			@extend .col-md-3
 			text-align center
 			padding 0 4px
+			.count
+				font-size 18px
+				color #a8a1a2
 	&__data
 		@extend .col-md-3
 		@extend .col-xs-12
@@ -76,15 +86,19 @@ header
 	border 1px solid #e1e8ed
 	border-radius 5px 5px 0 0
 	&__options
+		@extend .hidden-xs
 		border-bottom 1px solid #e1e8ed
 		li
 			padding 20px
+		a
+			color #a8a1a2
+			font-size 18px
 	&__tweets
 		&__content
 			@extend .col-md-12
 			border-bottom 1px solid #e1e8ed
 			padding 20px 0
-			img
+			.profile
 				@extend .col-md-2
 				width 80px
 			>.text
@@ -95,15 +109,21 @@ header
 					font-weight normal
 					color #8899a6
 				.img-tweet
-					width 300px
+					@extend .col-md-12
+					// width 300px
 					margin 20px auto
 					img
 						@extend .img-responsive
 						width 100%
+				.footer-tweet
+					@extend .col-md-2
+					@extend .col-xs-3
+					margin 10px 0
 	
 					
 .trends
 	@extend .col-md-3
+	@extend .hidden-xs
 	&__content
 		background-color #fff
 		border 1px solid #e1e8ed
@@ -141,7 +161,8 @@ header
 	width 210px
 	margin-top -130px
 
-		
+.active
+	color #000 !important
 
 /* Telefones em landscape e abaixo */
 @media (max-width: 480px)
@@ -169,7 +190,11 @@ header
 		margin-left 11px
 		
 	.infoProfile
-		border-bottom none
+		border-bottom 30px
+	.img-tweet
+		width 100%
+	.footer
+		padding-bottom 30px
 		
 			
 					

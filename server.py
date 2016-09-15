@@ -7,11 +7,13 @@ from bottle import Bottle, route, run, hook, template, get, response, request
 
 
 
-#inicia variaveis de acesso
+#inicia variaveis de acesso twitter
 cons_key = "OvfdRuq1u3iMfuYwOmJvaauad"
 cons_secret = "aMrb4y7gyDwiLzeFzgUSh3af5PgYBe6Wh2oasih2AhVRFsqG0s"
 access_token = "1864929535-UjtQEsaEeY7LiNao48jHKpLPqQnSfjldc766G2A"
 access_token_secret = "HgIpDHq3b1hvkFA0PojzrrY0y3KSQvST0qYurPiUuBZJw"
+
+
 
 #cria objeto para manipular a api do twitter
 auth = tweepy.OAuthHandler(cons_key, cons_secret)
@@ -51,9 +53,9 @@ def tweets():
 
 
 #get tweets with media
-@route('/tweetsMedia')
+@route('/tweets-media',METHOD='get')
 def tweetsImage():
-	tweets = api.user_timeline(id="americanascom",count=200)
+	tweets = api.user_timeline(id="americanascom",count=10,page=bottle.request.params.get('page'))
 	json = []
 	for t in tweets:
 		if 'media' in t.entities:
@@ -61,13 +63,17 @@ def tweetsImage():
 				imageTweet = image['media_url']
 				json.append({
 					'text': t.text,
-					'img': imageTweet
+					'img': imageTweet,
+					'imgProfile': t.user.profile_image_url,
+					'name': t.user.name,
+					'screen_name': "@"+t.user.screen_name,
+					'replyTo': t.in_reply_to_screen_name,
 				})
 	tweet = demjson.encode(json)
 	response.headers['Content-Type'] = 'application/json'
 	return tweet
 
-@route("/infoUser")
+@route("/info-user")
 def info():
 	info = api.get_user(id="americanascom")
 	json = {

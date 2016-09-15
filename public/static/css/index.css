@@ -1681,8 +1681,10 @@ pre code {
 .infoProfile__data,
 .main,
 .main__tweets__content,
-.main__tweets__content img,
+.main__tweets__content .profile,
 .main__tweets__content >.text,
+.main__tweets__content >.text .img-tweet,
+.main__tweets__content >.text .footer-tweet,
 .trends,
 .trends__content .title,
 .trends__content .list,
@@ -1704,7 +1706,8 @@ pre code {
 .col-xs-10,
 .col-xs-11,
 .col-xs-12,
-.infoProfile__data {
+.infoProfile__data,
+.main__tweets__content >.text .footer-tweet {
   float: left;
 }
 .col-xs-12,
@@ -1735,7 +1738,8 @@ pre code {
 .col-xs-4 {
   width: 33.33333333333333%;
 }
-.col-xs-3 {
+.col-xs-3,
+.main__tweets__content >.text .footer-tweet {
   width: 25%;
 }
 .col-xs-2 {
@@ -2051,8 +2055,10 @@ pre code {
   .infoProfile__data,
   .main,
   .main__tweets__content,
-  .main__tweets__content img,
+  .main__tweets__content .profile,
   .main__tweets__content >.text,
+  .main__tweets__content >.text .img-tweet,
+  .main__tweets__content >.text .footer-tweet,
   .trends,
   .trends__content .title,
   .trends__content .list,
@@ -2062,6 +2068,7 @@ pre code {
   .col-md-12,
   .main,
   .main__tweets__content,
+  .main__tweets__content >.text .img-tweet,
   .trends__content .title,
   .trends__content .list {
     width: 100%;
@@ -2104,7 +2111,8 @@ pre code {
     width: 25%;
   }
   .col-md-2,
-  .main__tweets__content img {
+  .main__tweets__content .profile,
+  .main__tweets__content >.text .footer-tweet {
     width: 16.666666666666664%;
   }
   .col-md-1 {
@@ -6730,7 +6738,9 @@ button.close {
   .hidden-xs,
   header nav .navigation li a span,
   header .search,
-  .infoProfile__numbers {
+  .infoProfile__numbers,
+  .main__options,
+  .trends {
     display: none !important;
   }
 }
@@ -6816,7 +6826,7 @@ header nav .navigation {
   padding: 0;
 }
 header nav .navigation li {
-  padding: 0 6px;
+  padding: 4px 6px;
 }
 header nav .navigation li a {
   padding: 0 4px;
@@ -6853,6 +6863,14 @@ header .icon {
   border-bottom: 1px solid #e1e8ed;
   background-color: #fff;
 }
+.infoProfile .site a {
+  color: #a8a1a2;
+}
+.infoProfile .geo,
+.infoProfile .site,
+.infoProfile .year {
+  margin-top: 10px;
+}
 .infoProfile__numbers {
   margin: 10px 0 0 50px;
 }
@@ -6862,6 +6880,13 @@ header .icon {
 .infoProfile__numbers .likes {
   text-align: center;
   padding: 0 4px;
+}
+.infoProfile__numbers .tweets-info .count,
+.infoProfile__numbers .friends .count,
+.infoProfile__numbers .followers .count,
+.infoProfile__numbers .likes .count {
+  font-size: 18px;
+  color: #a8a1a2;
 }
 .infoProfile__data {
   z-index: 9;
@@ -6886,11 +6911,15 @@ header .icon {
 .main__options li {
   padding: 20px;
 }
+.main__options a {
+  color: #a8a1a2;
+  font-size: 18px;
+}
 .main__tweets__content {
   border-bottom: 1px solid #e1e8ed;
   padding: 20px 0;
 }
-.main__tweets__content img {
+.main__tweets__content .profile {
   width: 80px;
 }
 .main__tweets__content >.text span {
@@ -6901,11 +6930,13 @@ header .icon {
   color: #8899a6;
 }
 .main__tweets__content >.text .img-tweet {
-  width: 300px;
   margin: 20px auto;
 }
 .main__tweets__content >.text .img-tweet img {
   width: 100%;
+}
+.main__tweets__content >.text .footer-tweet {
+  margin: 10px 0;
 }
 .trends__content {
   background-color: #fff;
@@ -6945,6 +6976,9 @@ header .icon {
   width: 210px;
   margin-top: -130px;
 }
+.active {
+  color: #000 !important;
+}
 @media (max-width: 480px) {
   header {
     border-bottom: 1px solid #e1e8ed;
@@ -6971,6 +7005,12 @@ header .icon {
     margin-left: 11px;
   }
   .infoProfile {
-    border-bottom: none;
+    border-bottom: 30px;
+  }
+  .img-tweet {
+    width: 100%;
+  }
+  .footer {
+    padding-bottom: 30px;
   }
 }

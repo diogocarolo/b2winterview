@@ -24,3 +24,7 @@ automatize o app para instalar e executar com um simples comando
 
 flesk rest api
 docker
+
+
+chave d7b2b136eaaf572b84068c71669d0737
+segredo 8925e8a6d59aefca
