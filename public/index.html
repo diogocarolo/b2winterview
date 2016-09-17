@@ -7,11 +7,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-app="app">
-	<!--<div class="um" ng-controller="tweets">
-		<ul infinite-scroll='loadTweets()' infinite-scroll-distance='2'>
-			<li ng-repeat="item in tweets">{{item.texto}} / <img src="{{item.img}}"></li>
-		</ul>
-	</div> -->
 	<header>
 		<div class="container">
 			<div class="row">
@@ -33,10 +28,13 @@
 		</div>
 	</header>
 	<section ng-controller="user">
+
+		<!-- bg image -->
 		<div class="bg-image" style="background-image: url('{{infos.img_background}}')" ></div>
 
 		<div class="infoProfile">
 			<div class="container">
+			<!-- Profile numbers -->
 				<div class="row">
 					<img src="{{infos.profile_image_url}}" class="imgProfile">
 					<div class="infoProfile__numbers">
@@ -54,6 +52,8 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- Profile data -->
 				<div class="row">
 					<div class="infoProfile__data">
 						<a class="title" href="">{{infos.name}}</a> <br>
@@ -66,15 +66,24 @@
 							<span><img src="static/img/link.png"><a href="http://{{infos.name}}">{{infos.name}}</a></span>
 						</div>
 						<div class="year"><span><img src="static/img/calendar.png"> Participa desde {{infos.month}} de {{infos.year}}</div>
+						
+						<div ng-controller="flickr" class="infoProfile__data__flickr">
+							<div class="infoProfile__data__flickr__text">
+								<span><img src="static/img/cam.png"> {{total}} Fotos e vídeos</span>
+							</div>
+							<img class="infoProfile__data__flickr__img" ng-repeat="item in flickr" src="https://farm{{item.farm}}.staticflickr.com/{{item.server}}/{{item.id}}_{{item.secret}}.jpg">
+						</div>
 					</div>
 					<div class="main" >
 						<div class="content-padd">
 							<ul class="main__options">
-								<li><a class="opt3" href="">Tweets</a></li>	
-								<li><a class="opt1 active" href="">Tweets e respostas</a></li>
-								<li><a class="opt2" href="">Mídia</a></li>
+								<li><a ng-click="visible(1,0,0)" ng-class="{active : visibleTweetsOnly === 1}" class="opt3" href="">Tweets</a></li>	
+								<li><a ng-click="visible(0,1,0)" ng-class="{active : visibleTweetsReply === 1}" class="opt1" href="">Tweets e respostas</a></li>
+								<li><a ng-click="visible(0,0,1)" ng-class="{active : visibleTweetsMedia === 1}" class="opt2" href="">Mídia</a></li>
 							</ul>
-							<div class="main__tweets" infinite-scroll='loadTweets()' infinite-scroll-disabled="busy" infinite-scroll-distance='2' ng-controller="tweets">
+
+							<!-- show tweets and reply -->
+							<div ng-show="visibleTweetsReply==1" class="main__tweets" infinite-scroll='loadTweets()' infinite-scroll-disabled="busy" infinite-scroll-distance='2' ng-controller="tweets">
 								<div ng-repeat="item in tweets" class="main__tweets__content">
 									<img class="profile" src="{{item.imgProfile}}">
 									<div class="text">
@@ -103,9 +112,11 @@
 									</div>
 								</div>
 							</div>
-							<!-- <div class="main__tweets-media hide" infinite-scroll='loadTweets()' infinite-scroll-disabled="busy" infinite-scroll-distance='2' ng-controller="tweets-media">
+
+							<!-- show tweets with media -->
+							<div ng-show="visibleTweetsMedia==1" class="main__tweets-media" infinite-scroll='loadTweets()' infinite-scroll-disabled="busy" infinite-scroll-distance='2' ng-controller="tweets-media">
 								<div ng-repeat="item in tweets" class="main__tweets__content">
-									<img src="{{item.imgProfile}}">
+									<img class="profile" src="{{item.imgProfile}}">
 									<div class="text">
 										<div class="reply" ng-if="item.replyTo != null">Em resposta a {{item.replyTo}}</div>
 										<div class="usernames">
@@ -132,9 +143,11 @@
 									</div>
 								</div>
 							</div>
-							<div class="main__tweets-only hide" infinite-scroll='loadTweets()' infinite-scroll-disabled="busy" infinite-scroll-distance='2' ng-controller="tweets">
-								<div ng-repeat="item in tweets" class="main__tweets__content" ng-if="item.replyTo == null">
-									<img src="{{item.imgProfile}}">
+
+							<!-- show only tweets -->
+							<div ng-show="visibleTweetsOnly==1" class="main__tweets-only" infinite-scroll='loadTweets()' infinite-scroll-disabled="busy" infinite-scroll-distance='2' ng-controller="tweets-only">
+								<div ng-repeat="item in tweets" class="main__tweets__content">
+									<img class="profile" src="{{item.imgProfile}}">
 									<div class="text">
 										<div class="reply" ng-if="item.replyTo != null">Em resposta a {{item.replyTo}}</div>
 										<div class="usernames">
@@ -160,9 +173,10 @@
 										</div>
 									</div>
 								</div>
-							</div> -->
+							</div>
 						</div>
 					</div>
+
 					<div class="trends" ng-controller="trends">
 						<div class="trends__content">
 							<div class="title">

@@ -1105,6 +1105,7 @@ img {
 .thumbnail a > img,
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img,
+.infoProfile__data__flickr__img,
 .main__tweets__content >.text .img-tweet img {
   display: block;
   max-width: 100%;
@@ -1679,6 +1680,8 @@ pre code {
 .infoProfile__numbers .followers,
 .infoProfile__numbers .likes,
 .infoProfile__data,
+.infoProfile__data__images .images-content,
+.infoProfile__data__flickr__img,
 .main,
 .main__tweets__content,
 .main__tweets__content .profile,
@@ -1877,7 +1880,9 @@ pre code {
   .col-sm-9,
   .col-sm-10,
   .col-sm-11,
-  .col-sm-12 {
+  .col-sm-12,
+  .infoProfile__data,
+  .main {
     float: left;
   }
   .col-sm-12 {
@@ -1889,7 +1894,8 @@ pre code {
   .col-sm-10 {
     width: 83.33333333333334%;
   }
-  .col-sm-9 {
+  .col-sm-9,
+  .main {
     width: 75%;
   }
   .col-sm-8 {
@@ -1907,7 +1913,8 @@ pre code {
   .col-sm-4 {
     width: 33.33333333333333%;
   }
-  .col-sm-3 {
+  .col-sm-3,
+  .infoProfile__data {
     width: 25%;
   }
   .col-sm-2 {
@@ -2053,6 +2060,8 @@ pre code {
   .infoProfile__numbers .followers,
   .infoProfile__numbers .likes,
   .infoProfile__data,
+  .infoProfile__data__images .images-content,
+  .infoProfile__data__flickr__img,
   .main,
   .main__tweets__content,
   .main__tweets__content .profile,
@@ -2066,7 +2075,6 @@ pre code {
     float: left;
   }
   .col-md-12,
-  .main,
   .main__tweets__content,
   .main__tweets__content >.text .img-tweet,
   .trends__content .title,
@@ -2098,7 +2106,9 @@ pre code {
     width: 41.66666666666667%;
   }
   .col-md-4,
-  .infoProfile__numbers {
+  .infoProfile__numbers,
+  .infoProfile__data__images .images-content,
+  .infoProfile__data__flickr__img {
     width: 33.33333333333333%;
   }
   .col-md-3,
@@ -6739,13 +6749,15 @@ button.close {
   header nav .navigation li a span,
   header .search,
   .infoProfile__numbers,
-  .main__options,
+  .infoProfile__data__flickr__img,
   .trends {
     display: none !important;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .hidden-sm {
+  .hidden-sm,
+  .infoProfile__numbers,
+  .trends {
     display: none !important;
   }
 }
@@ -6889,7 +6901,7 @@ header .icon {
   color: #a8a1a2;
 }
 .infoProfile__data {
-  z-index: 9;
+  z-index: 19;
 }
 .infoProfile__data .title {
   font-size: 24px;
@@ -6899,7 +6911,18 @@ header .icon {
 .infoProfile__data .subtitle {
   color: #8899a6;
 }
+.infoProfile__data__images .images-content {
+  padding: 15px;
+}
+.infoProfile__data__flickr__text {
+  margin: 10px 0;
+}
+.infoProfile__data__flickr__img {
+  margin: 5px 0;
+  padding: 1px;
+}
 .main {
+  z-index: 9;
   padding: 0;
   background-color: #fff;
   border: 1px solid #e1e8ed;
@@ -6978,6 +7001,7 @@ header .icon {
 }
 .active {
   color: #000 !important;
+  font-weight: bold;
 }
 @media (max-width: 480px) {
   header {
@@ -7007,10 +7031,16 @@ header .icon {
   .infoProfile {
     border-bottom: 30px;
   }
+  .infoProfile__data {
+    margin: 10px 0;
+  }
   .img-tweet {
     width: 100%;
   }
   .footer {
     padding-bottom: 30px;
+  }
+  .main__options li {
+    padding: 15px 8px;
   }
 }

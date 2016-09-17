@@ -59,6 +59,7 @@ header
 	&__numbers
 		@extend .col-md-4
 		@extend .hidden-xs
+		@extend .hidden-sm
 		margin 10px 0 0 50px 
 		.tweets-info,.friends,.followers,.likes
 			@extend .col-md-3
@@ -69,24 +70,39 @@ header
 				color #a8a1a2
 	&__data
 		@extend .col-md-3
+		@extend .col-sm-3
 		@extend .col-xs-12
-		z-index 9
+		z-index 19
 		.title
 			font-size 24px
 			font-weight bold
 			color #000
 		.subtitle
 			color #8899a6
+		&__images
+			.images-content
+				@extend .col-md-4
+				padding 15px
+		&__flickr
+			&__text
+				margin 10px 0
+			&__img
+				@extend .col-md-4
+				@extend .img-responsive
+				@extend .hidden-xs
+				margin 5px 0
+				padding 1px
 
 .main
 	@extend .col-md-6
-	@extend .col-md-12
+	@extend .col-sm-9
+	z-index 9
 	padding 0
 	background-color #fff
 	border 1px solid #e1e8ed
 	border-radius 5px 5px 0 0
 	&__options
-		@extend .hidden-xs
+		// @extend .hidden-xs
 		border-bottom 1px solid #e1e8ed
 		li
 			padding 20px
@@ -124,6 +140,7 @@ header
 .trends
 	@extend .col-md-3
 	@extend .hidden-xs
+	@extend .hidden-sm
 	&__content
 		background-color #fff
 		border 1px solid #e1e8ed
@@ -163,6 +180,7 @@ header
 
 .active
 	color #000 !important
+	font-weight bold
 
 /* Telefones em landscape e abaixo */
 @media (max-width: 480px)
@@ -191,10 +209,16 @@ header
 		
 	.infoProfile
 		border-bottom 30px
+		&__data
+			margin 10px 0
 	.img-tweet
 		width 100%
 	.footer
 		padding-bottom 30px
+	.main
+		&__options
+			li
+				padding 15px 8px
 		
 			
 					
