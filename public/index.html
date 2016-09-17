@@ -176,8 +176,37 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="trends" ng-controller="trends">
+					<div class="trends-follow">
+						<div class="trends-follow__follow">
+							<div class="trends-follow__follow__content" ng-controller="who-follow">
+								<div class="title">
+									<span>Quem seguir</span>
+								</div>
+								<div ng-repeat="item in follow" class="list-follow">
+									<img src="{{item.profile_image}}">
+									<div class="name">
+										<span>{{item.name}}</span> <br>
+									 	<small>{{item.screen_name}}</small>
+								 		<button class="btn-follow">Seguir</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="trends-follow__trends" ng-controller="trends">
+							<div class="trends-follow__trends__content">
+								<div class="title">
+									<span>Assuntos do momento</span>
+								</div>
+								<div ng-repeat="item in trends" class="list">
+									<a href="">
+										<span class="name">{{item.name}}</span> <br>
+										<span class="count" ng-if="item.tweet_count != null">{{item.tweet_count}} Tweets</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+<!-- 					<div class="trends" ng-controller="trends">
 						<div class="trends__content">
 							<div class="title">
 								<span>Assuntos do momento</span>
@@ -189,7 +218,7 @@
 								</a>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

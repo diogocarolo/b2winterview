@@ -6,6 +6,7 @@ import demjson
 import datetime
 import flickrapi
 import json
+import random
 
 api_key = 'd7b2b136eaaf572b84068c71669d0737'
 api_secret = '8925e8a6d59aefca'
@@ -124,5 +125,25 @@ def flickr():
 	data = {'images': json,'total':d['photos']['total']}
 	infos = demjson.encode(data)
 	return Response(infos,mimetype = 'application/json')
+
+@app.route("/who-follow")
+def follow():
+	json =[]
+	options = ['frontend','backend','devs','developer','javascript','angularjs','android developer','python']
+	random.shuffle(options)
+	option = random.sample(options,1)
+	print option
+	for x in range(4):
+		user = api.search_users(q=option,page=x,count=10)
+		for u in user:
+			json.append({
+				'name': u.name,
+				'profile_image' : u.profile_image_url,
+				'screen_name' : "@"+u.screen_name,
+			})
+	random.shuffle(json)
+
+	data = demjson.encode(random.sample(json,3))
+	return Response(data,mimetype = 'application/json')
 
 app.run(threaded=True)

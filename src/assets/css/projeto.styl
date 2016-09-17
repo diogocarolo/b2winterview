@@ -136,34 +136,59 @@ header
 					@extend .col-xs-3
 					margin 10px 0
 	
-					
-.trends
+
+.trends-follow
 	@extend .col-md-3
 	@extend .hidden-xs
 	@extend .hidden-sm
-	&__content
-		background-color #fff
-		border 1px solid #e1e8ed
-		border-radius 5px 5px 0 0
-		padding 0
-		.title,.list
-			@extend .col-md-12
-			padding 15px
-			border-bottom 1px solid #e1e8ed
+	&__follow,&__trends
+		display table
+		margin-bottom 20px
+		&__content
 			background-color #fff
-		.title
-			color #66757f
-			font-size 18px
-			font-weight 300
-		.list
-			a
-				text-decoration none
+			border 1px solid #e1e8ed
+			border-radius 5px 5px 0 0
+			padding 0
+			.title,.list
+				@extend .col-md-12
+				padding 15px
+				border-bottom 1px solid #e1e8ed
+				background-color #fff
+			.title
+				color #66757f
+				font-size 18px
+				font-weight 300
+			.list
+				a
+					text-decoration none
+					.name
+						color #a8a1a2
+						font-weight bold
+					.count
+						color #8899a6
+			.list-follow
+				@extend .col-md-12
+				padding 15px
+				border-bottom 1px solid #e1e8ed
+				background-color #fff
+				img
+					@extend .col-md-4
 				.name
-					color #a8a1a2
-					font-weight bold
-				.count
-					color #8899a6
+					@extend .col-md-8
+					font-size 14px
+					.btn-follow
+						padding 3px 30px
+						background-color #fff
+						border 1px solid #1da1f2
+						margin-top 10px
+						transition .4s
+						&:hover
+							transition .4s
+							color #fff
+							border 1px solid #fff
+							background-color #1da1f2
 
+					
 		
 			
 .imgProfile
@@ -180,7 +205,6 @@ header
 
 .active
 	color #000 !important
-	font-weight bold
 
 /* Telefones em landscape e abaixo */
 @media (max-width: 480px)

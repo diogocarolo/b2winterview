@@ -95,3 +95,9 @@ app.controller('flickr',['$scope','$http',function ($scope,$http) {
 		$scope.total = data.total;
 	});
 }]);
+
+app.controller('who-follow',['$scope','$http',function ($scope,$http) {
+	$http.get("http://localhost:5000/who-follow").success(function (data) {
+		$scope.follow = data;
+	});
+}]);

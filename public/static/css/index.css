@@ -1688,9 +1688,17 @@ pre code {
 .main__tweets__content >.text,
 .main__tweets__content >.text .img-tweet,
 .main__tweets__content >.text .footer-tweet,
-.trends,
-.trends__content .title,
-.trends__content .list,
+.trends-follow,
+.trends-follow__follow__content .title,
+.trends-follow__trends__content .title,
+.trends-follow__follow__content .list,
+.trends-follow__trends__content .list,
+.trends-follow__follow__content .list-follow,
+.trends-follow__trends__content .list-follow,
+.trends-follow__follow__content .list-follow img,
+.trends-follow__trends__content .list-follow img,
+.trends-follow__follow__content .list-follow .name,
+.trends-follow__trends__content .list-follow .name,
 .imgProfile {
   position: relative;
   min-height: 1px;
@@ -2068,17 +2076,29 @@ pre code {
   .main__tweets__content >.text,
   .main__tweets__content >.text .img-tweet,
   .main__tweets__content >.text .footer-tweet,
-  .trends,
-  .trends__content .title,
-  .trends__content .list,
+  .trends-follow,
+  .trends-follow__follow__content .title,
+  .trends-follow__trends__content .title,
+  .trends-follow__follow__content .list,
+  .trends-follow__trends__content .list,
+  .trends-follow__follow__content .list-follow,
+  .trends-follow__trends__content .list-follow,
+  .trends-follow__follow__content .list-follow img,
+  .trends-follow__trends__content .list-follow img,
+  .trends-follow__follow__content .list-follow .name,
+  .trends-follow__trends__content .list-follow .name,
   .imgProfile {
     float: left;
   }
   .col-md-12,
   .main__tweets__content,
   .main__tweets__content >.text .img-tweet,
-  .trends__content .title,
-  .trends__content .list {
+  .trends-follow__follow__content .title,
+  .trends-follow__trends__content .title,
+  .trends-follow__follow__content .list,
+  .trends-follow__trends__content .list,
+  .trends-follow__follow__content .list-follow,
+  .trends-follow__trends__content .list-follow {
     width: 100%;
   }
   .col-md-11 {
@@ -2091,7 +2111,9 @@ pre code {
   .col-md-9 {
     width: 75%;
   }
-  .col-md-8 {
+  .col-md-8,
+  .trends-follow__follow__content .list-follow .name,
+  .trends-follow__trends__content .list-follow .name {
     width: 66.66666666666666%;
   }
   .col-md-7 {
@@ -2108,7 +2130,9 @@ pre code {
   .col-md-4,
   .infoProfile__numbers,
   .infoProfile__data__images .images-content,
-  .infoProfile__data__flickr__img {
+  .infoProfile__data__flickr__img,
+  .trends-follow__follow__content .list-follow img,
+  .trends-follow__trends__content .list-follow img {
     width: 33.33333333333333%;
   }
   .col-md-3,
@@ -2117,7 +2141,7 @@ pre code {
   .infoProfile__numbers .followers,
   .infoProfile__numbers .likes,
   .infoProfile__data,
-  .trends {
+  .trends-follow {
     width: 25%;
   }
   .col-md-2,
@@ -6750,14 +6774,14 @@ button.close {
   header .search,
   .infoProfile__numbers,
   .infoProfile__data__flickr__img,
-  .trends {
+  .trends-follow {
     display: none !important;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .hidden-sm,
   .infoProfile__numbers,
-  .trends {
+  .trends-follow {
     display: none !important;
   }
 }
@@ -6961,32 +6985,69 @@ header .icon {
 .main__tweets__content >.text .footer-tweet {
   margin: 10px 0;
 }
-.trends__content {
+.trends-follow__follow,
+.trends-follow__trends {
+  display: table;
+  margin-bottom: 20px;
+}
+.trends-follow__follow__content,
+.trends-follow__trends__content {
   background-color: #fff;
   border: 1px solid #e1e8ed;
   border-radius: 5px 5px 0 0;
   padding: 0;
 }
-.trends__content .title,
-.trends__content .list {
+.trends-follow__follow__content .title,
+.trends-follow__trends__content .title,
+.trends-follow__follow__content .list,
+.trends-follow__trends__content .list {
   padding: 15px;
   border-bottom: 1px solid #e1e8ed;
   background-color: #fff;
 }
-.trends__content .title {
+.trends-follow__follow__content .title,
+.trends-follow__trends__content .title {
   color: #66757f;
   font-size: 18px;
   font-weight: 300;
 }
-.trends__content .list a {
+.trends-follow__follow__content .list a,
+.trends-follow__trends__content .list a {
   text-decoration: none;
 }
-.trends__content .list a .name {
+.trends-follow__follow__content .list a .name,
+.trends-follow__trends__content .list a .name {
   color: #a8a1a2;
   font-weight: bold;
 }
-.trends__content .list a .count {
+.trends-follow__follow__content .list a .count,
+.trends-follow__trends__content .list a .count {
   color: #8899a6;
+}
+.trends-follow__follow__content .list-follow,
+.trends-follow__trends__content .list-follow {
+  padding: 15px;
+  border-bottom: 1px solid #e1e8ed;
+  background-color: #fff;
+}
+.trends-follow__follow__content .list-follow .name,
+.trends-follow__trends__content .list-follow .name {
+  font-size: 14px;
+}
+.trends-follow__follow__content .list-follow .name .btn-follow,
+.trends-follow__trends__content .list-follow .name .btn-follow {
+  padding: 3px 30px;
+  background-color: #fff;
+  border: 1px solid #1da1f2;
+  margin-top: 10px;
+  transition: 0.4s;
+}
+.trends-follow__follow__content .list-follow .name .btn-follow:hover,
+.trends-follow__trends__content .list-follow .name .btn-follow:hover {
+  transition: 0.4s;
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: #1da1f2;
 }
 .imgProfile {
   padding: 0;
@@ -7001,7 +7062,6 @@ header .icon {
 }
 .active {
   color: #000 !important;
-  font-weight: bold;
 }
 @media (max-width: 480px) {
   header {
