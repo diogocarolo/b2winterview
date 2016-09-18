@@ -1,13 +1,9 @@
 install:
 	@echo 'instalando dependencias python'
-	pip install tweepy
-	pip install demjson
-	pip install flask
-	pip install flask-cors
-	pip install flickrapi
+	pip install -r requirements.txt
+
 	@echo 'levantando servers'
-	cd /public
+	cd ./public
 	python -m SimpleHTTPServer &
 	python server-flask.py &
-	google-chrome 127.0.0.1:8000/public
 
