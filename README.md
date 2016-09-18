@@ -1,5 +1,3 @@
-# b2winterview
-
 <h1>B2W - Challenge</h1>
 My solution was developed with python and angular js.
 
