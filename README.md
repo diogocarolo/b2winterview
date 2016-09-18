@@ -15,4 +15,8 @@ $ mkproject b2winterview
 ```
 $ make
 ```
-depois acesse localhost:8000
+depois acesse localhost:8000/public
+
+###Requisitos
+- virtualenv
+- python 2.6
