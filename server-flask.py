@@ -111,7 +111,7 @@ def trend():
 
 @app.route("/flickr")
 def flickr():
-	data = f.photos.search(tags="paraolimpiadas",per_page=6)
+	data = f.photos.search(tags="olimpiadas",per_page=6)
 	d = demjson.decode(data)
 	json = []
 	print d['photos']['total']
